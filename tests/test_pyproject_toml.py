@@ -4,6 +4,7 @@ from itertools import chain
 import pytest
 import toml
 
+# TODO: Change all occurrences of template in this file to your package name
 from template import REPO_ROOT, __version__
 
 
@@ -42,6 +43,7 @@ def test_pyproject_install_all(
     pyproject_config: dict[str, t.Any], all_dependencies: dict[str, t.Any]
 ) -> None:
     """Installing using `pip install 'template[all]'` should install all dependencies."""  # noqa: E501
+    # TODO: Change this to your package name
     extras = pyproject_config["tool"]["poetry"]["extras"]
     all_extras: dict[str, str] = {k: v for k, v in extras.items() if k != "all"}
     all_extra_dependencies = chain.from_iterable(all_extras.values())
@@ -54,6 +56,7 @@ def test_pyproject_install_all(
             assert dependency in all_dependencies
 
 
+# TODO: Change this to your package name
 def test_template_version(pyproject_config: dict[str, t.Any]) -> None:
     """Ensure that the version of template in template/__init__.py is the same as in
     pyproject.toml.

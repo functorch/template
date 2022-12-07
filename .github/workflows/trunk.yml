@@ -25,6 +25,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "poetry"
           cache-dependency-path: "pyproject.toml"
+      # TODO: Rename template to your project name here
       - name: Install template
         run: pip install '.[all]'
       - name: Trunk Check

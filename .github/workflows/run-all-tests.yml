@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.10"]
-    runs-on: [self-hosted]
+    runs-on: ubuntu-20.04
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "poetry"
           cache-dependency-path: "pyproject.toml"
+      # TODO: Rename template to your project name here
       - name: Install template
-        run: pip install '.[all]'
+        run: pip install -e '.[all]'
       - name: Run tests
         run: pytest -vs --all
